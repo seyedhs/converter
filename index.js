@@ -615,11 +615,12 @@ function singboxTlsBlock(p, fallbackSni, forceEnabled) {
       public_key: p.pbk || '',
       short_id: p.sid || '',
     };
+    tls.utls = { enabled: true, fingerprint: p.fp || 'chrome' };
   } else {
     tls.insecure = p.allowInsecure === '1' || p.insecure === '1';
     if (p.alpn) tls.alpn = p.alpn.split(',');
+    if (p.fp) tls.utls = { enabled: true, fingerprint: p.fp };
   }
-  if (p.fp) tls.utls = { enabled: true, fingerprint: p.fp };
   return tls;
 }
 
