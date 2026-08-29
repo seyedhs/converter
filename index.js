@@ -475,7 +475,6 @@ function buildXrayStreamSettingsForLb(cfg) {
   } else if (security === 'tls') {
     stream.tlsSettings = {
       serverName: p.sni || p.host || cfg.server,
-      allowInsecure: p.allowInsecure === '1' || p.insecure === '1',
     };
     if (p.fp) stream.tlsSettings.fingerprint = p.fp;
     if (p.alpn) stream.tlsSettings.alpn = p.alpn.split(',');
